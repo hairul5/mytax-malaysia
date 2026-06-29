@@ -500,7 +500,7 @@ Relief gaps (room remaining before cap): ${JSON.stringify(gaps)}.
 Suggest top 3 relief categories to spend on for maximum tax reduction. For each, give: category id, specific actionable suggestion (1 sentence, Malaysian context), and estimated tax saving if gap fully filled.
 Return ONLY JSON array: [{"id":"category_id","suggestion":"...","saving":0}]`;
     try{
-      const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},
+      const res=await fetch("/api/claude",{method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:600,
           messages:[{role:"user",content:prompt}]})});
       const data=await res.json();
@@ -660,7 +660,7 @@ ${expenses.length>0?`
     if(!isImg)return;
     setExpAiState("loading");setExpAiNote("");
     try{
-      const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},
+      const res=await fetch("/api/claude",{method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:600,
           system:`Malaysian LHDN tax assistant. Return ONLY JSON: {"merchant":"","date":"YYYY-MM-DD","amount":0,"lhdn_category":"medical|education|lifestyle|equipment|epf|childcare|charity|other","tax_claimable":true,"treatment":"implikasi cukai explanation","confidence":"high|medium|low"}`,
           messages:[{role:"user",content:[{type:"image",source:{type:"base64",media_type:file.type,data:dataUrl.split(",")[1]}},{type:"text",text:"Analyse for LHDN."}]}]})});
@@ -691,7 +691,7 @@ ${expenses.length>0?`
   async function scanReceipt(){
     if(!imgB64)return;setScan(SCAN.SCANNING);setScanError(null);
     try{
-      const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},
+      const res=await fetch("/api/claude",{method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,
           system:`Malaysian tax receipt OCR. Return ONLY JSON: {"merchant":"","date":"YYYY-MM-DD","total":0,"items":[],"category":"medical|education|lifestyle|equipment|epf|childcare|charity|other","category_reason":"","tax_claimable":true,"confidence":"high|medium|low","notes":""}`,
           messages:[{role:"user",content:[{type:"image",source:{type:"base64",media_type:"image/jpeg",data:imgB64}},{type:"text",text:"Extract and classify for LHDN."}]}]})});
@@ -713,7 +713,7 @@ ${expenses.length>0?`
     if(!isImg)return;
     setDocExtracting(true);
     try{
-      const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},
+      const res=await fetch("/api/claude",{method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,
           system:`Malaysian tax doc OCR. Return ONLY JSON: {"doc_type":"receipt|invoice|form|other","merchant":"","date":"YYYY-MM-DD","amount":0,"items":[],"lhdn_category":"medical|education|lifestyle|equipment|epf|childcare|charity|income|other","category_reason":"","tax_claimable":true,"is_expense":true,"confidence":"high|medium|low","suggested_name":"","notes":""}`,
           messages:[{role:"user",content:[{type:"image",source:{type:"base64",media_type:file.type,data:dataUrl.split(",")[1]}},{type:"text",text:"Extract and classify for LHDN."}]}]})});
