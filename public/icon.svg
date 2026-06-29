@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Malaysian blue background, rounded corners -->
+  <rect width="512" height="512" rx="80" fill="#003893"/>
+  <!-- Bold M (path-based, no font dependency) -->
+  <path d="M 56,406 L 56,88 L 256,248 L 456,88 L 456,406 L 396,406 L 396,162 L 256,310 L 116,162 L 116,406 Z" fill="white"/>
+  <!-- Red accent bar — Malaysian flag red -->
+  <rect x="56" y="432" width="400" height="26" rx="13" fill="#CC0001"/>
+</svg>
