@@ -338,14 +338,17 @@ const T = {
 };
 
 const TAX_RELIEF_CATEGORIES = [
-  {id:"medical",  en:"Medical & Health",      ms:"Perubatan & Kesihatan",    icon:"🏥",limit:10000,color:"#52B788"},
-  {id:"education",en:"Education",              ms:"Pendidikan (Yuran)",        icon:"📚",limit:7000, color:"#40916C"},
-  {id:"lifestyle",en:"Lifestyle",              ms:"Gaya Hidup",                icon:"🛍️",limit:2500, color:"#74C69D"},
-  {id:"equipment",en:"Equipment & Devices",    ms:"Komputer / Telefon Pintar", icon:"💻",limit:2500, color:"#95D5B2"},
-  {id:"epf",      en:"EPF / Life Insurance",   ms:"Insurans Nyawa & KWSP",     icon:"🛡️",limit:7000, color:"#2D6A4F"},
-  {id:"childcare",en:"Child & Education",      ms:"Anak & Yuran Taska/Tadika", icon:"👶",limit:3000, color:"#1B4332"},
-  {id:"charity",  en:"Donations & Zakat",      ms:"Derma & Zakat",             icon:"🤲",limit:null, color:"#B7E4C7"},
-  {id:"other",    en:"Other (Non-claimable)",  ms:"Lain-lain (Tidak Dituntut)",icon:"📋",limit:null, color:"#555"},
+  {id:"medical",   en:"Medical & Health",               ms:"Perubatan & Kesihatan",        icon:"🏥",limit:10000,color:"#52B788"},
+  {id:"education", en:"Education",                      ms:"Pendidikan (Yuran)",            icon:"📚",limit:7000, color:"#40916C"},
+  {id:"lifestyle", en:"Lifestyle",                      ms:"Gaya Hidup",                    icon:"🛍️",limit:2500, color:"#74C69D"},
+  {id:"equipment", en:"Equipment & Devices",            ms:"Komputer / Telefon Pintar",     icon:"💻",limit:2500, color:"#95D5B2"},
+  {id:"epf",       en:"EPF / Life Insurance",           ms:"Insurans Nyawa & KWSP",         icon:"🛡️",limit:7000, color:"#2D6A4F"},
+  {id:"childcare", en:"Child & Education",              ms:"Anak & Yuran Taska/Tadika",     icon:"👶",limit:3000, color:"#1B4332"},
+  {id:"donations", en:"Donations (Approved Bodies)",    ms:"Derma (Institusi Diluluskan)",  icon:"🤲",limit:7000, color:"#B7E4C7"},
+  {id:"zakat",     en:"Zakat",                          ms:"Zakat",                         icon:"🌙",limit:null, color:"#D4AF37"},
+  {id:"sspn",      en:"SSPN Savings",                   ms:"Simpanan SSPN",                 icon:"🎓",limit:8000, color:"#4A90D9"},
+  {id:"prs",       en:"Private Retirement Scheme (PRS)",ms:"Skim Persaraan Swasta (PRS)",   icon:"🏦",limit:3000, color:"#7B5EA7"},
+  {id:"other",     en:"Other (Non-claimable)",          ms:"Lain-lain (Tidak Dituntut)",    icon:"📋",limit:null, color:"#555"},
 ];
 
 const INCOME_BANDS = [
@@ -360,20 +363,23 @@ const SAMPLE_EXPENSES = [
   {id:3,desc:"Books – Islamic Finance", amount:120, category:"lifestyle", date:"2026-02-18",thumb:null},
   {id:4,desc:"Laptop for Work",         amount:3200,category:"equipment", date:"2026-03-05",thumb:null},
   {id:5,desc:"Medical Check-up",        amount:780, category:"medical",  date:"2026-03-22",thumb:null},
-  {id:6,desc:"Zakat Pendapatan",        amount:1200,category:"charity",  date:"2026-04-01",thumb:null,zakatSubtype:"pendapatan"},
+  {id:6,desc:"Zakat Pendapatan",        amount:1200,category:"zakat",   date:"2026-04-01",thumb:null,zakatSubtype:"pendapatan"},
 ];
 
 const DOC_CATS = [
-  {id:"all",      en:"All",              ms:"Semua",                icon:"🗂️",color:"#74C69D"},
-  {id:"medical",  en:"Medical",          ms:"Perubatan",            icon:"🏥",color:"#52B788"},
-  {id:"education",en:"Education",        ms:"Pendidikan",           icon:"📚",color:"#40916C"},
-  {id:"lifestyle",en:"Lifestyle",        ms:"Gaya Hidup",           icon:"🛍️",color:"#74C69D"},
-  {id:"equipment",en:"Equipment",        ms:"Peralatan",            icon:"💻",color:"#95D5B2"},
-  {id:"epf",      en:"EPF / Insurance",  ms:"Insurans & KWSP",      icon:"🛡️",color:"#2D6A4F"},
-  {id:"childcare",en:"Child",            ms:"Anak & Taska",         icon:"👶",color:"#1B4332"},
-  {id:"charity",  en:"Zakat / Charity",  ms:"Zakat / Derma",        icon:"🤲",color:"#B7E4C7"},
-  {id:"income",   en:"Income / EA Form", ms:"Pendapatan / Borang EA",icon:"💼",color:"#D4AF37"},
-  {id:"other",    en:"Others",           ms:"Lain-lain",            icon:"📋",color:"#555"},
+  {id:"all",      en:"All",              ms:"Semua",                     icon:"🗂️",color:"#74C69D"},
+  {id:"medical",  en:"Medical",          ms:"Perubatan",                 icon:"🏥",color:"#52B788"},
+  {id:"education",en:"Education",        ms:"Pendidikan",                icon:"📚",color:"#40916C"},
+  {id:"lifestyle",en:"Lifestyle",        ms:"Gaya Hidup",                icon:"🛍️",color:"#74C69D"},
+  {id:"equipment",en:"Equipment",        ms:"Peralatan",                 icon:"💻",color:"#95D5B2"},
+  {id:"epf",      en:"EPF / Insurance",  ms:"Insurans & KWSP",           icon:"🛡️",color:"#2D6A4F"},
+  {id:"childcare",en:"Child",            ms:"Anak & Taska",              icon:"👶",color:"#1B4332"},
+  {id:"donations",en:"Donations",        ms:"Derma",                     icon:"🤲",color:"#B7E4C7"},
+  {id:"zakat",    en:"Zakat",            ms:"Zakat",                     icon:"🌙",color:"#D4AF37"},
+  {id:"sspn",     en:"SSPN",             ms:"SSPN",                      icon:"🎓",color:"#4A90D9"},
+  {id:"prs",      en:"PRS",              ms:"PRS",                       icon:"🏦",color:"#7B5EA7"},
+  {id:"income",   en:"Income / EA Form", ms:"Pendapatan / Borang EA",    icon:"💼",color:"#D4AF37"},
+  {id:"other",    en:"Others",           ms:"Lain-lain",                 icon:"📋",color:"#555"},
 ];
 
 const FILE_TYPES = {
@@ -474,11 +480,11 @@ export default function MyTaxApp(){
   const[showDocs,setShowDocs]=useState(false);
   const[showSettings,setShowSettings]=useState(false);
   const[showKebabMenu,setShowKebabMenu]=useState(false);
-  const[planAmounts,setPlanAmounts]=useState({medical:0,education:0,lifestyle:0,equipment:0,epf:0,childcare:0,charity:0});
+  const[planAmounts,setPlanAmounts]=useState({medical:0,education:0,lifestyle:0,equipment:0,epf:0,childcare:0,donations:0,sspn:0,prs:0});
   const[planApplied,setPlanApplied]=useState(false);
   const[planSuggestions,setPlanSuggestions]=useState(null);
   const[planLoading,setPlanLoading]=useState(false);
-  function resetPlan(){setPlanAmounts({medical:0,education:0,lifestyle:0,equipment:0,epf:0,childcare:0,charity:0});setPlanSuggestions(null);setPlanApplied(false);}
+  function resetPlan(){setPlanAmounts({medical:0,education:0,lifestyle:0,equipment:0,epf:0,childcare:0,donations:0,sspn:0,prs:0});setPlanSuggestions(null);setPlanApplied(false);}
   function applyPlan(){
     const today=new Date().toISOString().slice(0,10);
     const newExp=Object.entries(planAmounts).filter(([,v])=>v>0).map(([cat,amt])=>({
@@ -634,7 +640,8 @@ ${expenses.length>0?`
   const mergedEpf=Math.min(Math.max(reliefTotals["epf"]||0,epfContrib),7000);
   const cappedReliefs=TAX_RELIEF_CATEGORIES.reduce((sum,c)=>{
     if(c.id==="epf")return sum+mergedEpf;
-    return sum+(c.limit?Math.min(reliefTotals[c.id],c.limit):reliefTotals[c.id]);
+    if(c.id==="zakat")return sum; // Zakat is a Rebat (tax rebate), not a Pelepasan (relief)
+    return sum+(c.limit?Math.min(reliefTotals[c.id]||0,c.limit):reliefTotals[c.id]||0);
   },0);
   const totalRelief=personalReliefTotal+cappedReliefs;
   const chargeable=Math.max(0,annualIncome-totalRelief);
@@ -662,7 +669,7 @@ ${expenses.length>0?`
     try{
       const res=await fetch("/api/claude",{method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:600,
-          system:`Malaysian LHDN tax assistant. Return ONLY JSON: {"merchant":"","date":"YYYY-MM-DD","amount":0,"lhdn_category":"medical|education|lifestyle|equipment|epf|childcare|charity|other","tax_claimable":true,"treatment":"implikasi cukai explanation","confidence":"high|medium|low"}`,
+          system:`Malaysian LHDN tax assistant. Return ONLY JSON: {"merchant":"","date":"YYYY-MM-DD","amount":0,"lhdn_category":"medical|education|lifestyle|equipment|epf|childcare|donations|zakat|sspn|prs|other","tax_claimable":true,"treatment":"implikasi cukai explanation","confidence":"high|medium|low"}`,
           messages:[{role:"user",content:[{type:"image",source:{type:"base64",media_type:file.type,data:dataUrl.split(",")[1]}},{type:"text",text:"Analyse for LHDN."}]}]})});
       const data=await res.json();
       const parsed=JSON.parse(data.content.map(b=>b.text||"").join("").replace(/```json|```/g,"").trim());
@@ -693,7 +700,7 @@ ${expenses.length>0?`
     try{
       const res=await fetch("/api/claude",{method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,
-          system:`Malaysian tax receipt OCR. Return ONLY JSON: {"merchant":"","date":"YYYY-MM-DD","total":0,"items":[],"category":"medical|education|lifestyle|equipment|epf|childcare|charity|other","category_reason":"","tax_claimable":true,"confidence":"high|medium|low","notes":""}`,
+          system:`Malaysian tax receipt OCR. Return ONLY JSON: {"merchant":"","date":"YYYY-MM-DD","total":0,"items":[],"category":"medical|education|lifestyle|equipment|epf|childcare|donations|zakat|sspn|prs|other","category_reason":"","tax_claimable":true,"confidence":"high|medium|low","notes":""}`,
           messages:[{role:"user",content:[{type:"image",source:{type:"base64",media_type:"image/jpeg",data:imgB64}},{type:"text",text:"Extract and classify for LHDN."}]}]})});
       const data=await res.json();
       const parsed=JSON.parse(data.content?.map(b=>b.text||"").join("").replace(/```json|```/g,"").trim());
@@ -715,7 +722,7 @@ ${expenses.length>0?`
     try{
       const res=await fetch("/api/claude",{method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,
-          system:`Malaysian tax doc OCR. Return ONLY JSON: {"doc_type":"receipt|invoice|form|other","merchant":"","date":"YYYY-MM-DD","amount":0,"items":[],"lhdn_category":"medical|education|lifestyle|equipment|epf|childcare|charity|income|other","category_reason":"","tax_claimable":true,"is_expense":true,"confidence":"high|medium|low","suggested_name":"","notes":""}`,
+          system:`Malaysian tax doc OCR. Return ONLY JSON: {"doc_type":"receipt|invoice|form|other","merchant":"","date":"YYYY-MM-DD","amount":0,"items":[],"lhdn_category":"medical|education|lifestyle|equipment|epf|childcare|donations|zakat|sspn|prs|income|other","category_reason":"","tax_claimable":true,"is_expense":true,"confidence":"high|medium|low","suggested_name":"","notes":""}`,
           messages:[{role:"user",content:[{type:"image",source:{type:"base64",media_type:file.type,data:dataUrl.split(",")[1]}},{type:"text",text:"Extract and classify for LHDN."}]}]})});
       const data=await res.json();
       const p=JSON.parse(data.content?.map(b=>b.text||"").join("").replace(/```json|```/g,"").trim());
@@ -733,7 +740,7 @@ ${expenses.length>0?`
   function deleteDoc(id){setDocs(prev=>prev.filter(d=>d.id!==id));}
   function saveZakat(){
     if(zakatDeclared<=0)return;
-    setExpenses(prev=>[...prev.filter(e=>e.zakatSubtype!=="pendapatan"),{id:Date.now(),desc:`Zakat Pendapatan (${new Date().getFullYear()})`,amount:Math.round(zakatDeclared*100)/100,category:"charity",zakatSubtype:"pendapatan",date:new Date().toISOString().slice(0,10),thumb:null}]);
+    setExpenses(prev=>[...prev.filter(e=>e.zakatSubtype!=="pendapatan"),{id:Date.now(),desc:`Zakat Pendapatan (${new Date().getFullYear()})`,amount:Math.round(zakatDeclared*100)/100,category:"zakat",zakatSubtype:"pendapatan",date:new Date().toISOString().slice(0,10),thumb:null}]);
     setZakatSaved(true);setTimeout(()=>setZakatSaved(false),3000);
   }
 
@@ -1367,7 +1374,7 @@ return(<div key={cat.id} style={card()}>
 <span style={{color:"#64748B",fontSize:12}}>{s.planEffectiveBracket}</span>
 <span style={{color:"#3B6FD4",fontWeight:"bold",fontSize:14}}>{(planMarginalRate*100).toFixed(1)}%</span>
 </div>
-{TAX_RELIEF_CATEGORIES.filter(c=>c.id!=="other").map(cat=>{
+{TAX_RELIEF_CATEGORIES.filter(c=>c.id!=="other"&&c.id!=="zakat").map(cat=>{
 const spent=cat.id==="epf"?mergedEpf:(reliefTotals[cat.id]||0);
 const cap=cat.limit||0;
 const gap=cat.limit?Math.max(0,cap-spent):9999;
