@@ -91,8 +91,8 @@ const T = {
     selfSection:"🧑 Self Reliefs",selfDisabled:"Self — Disabled (OKU) +RM6,000",
     selfDisabledSub:"Additional RM6,000 on top of standard RM9,000",
     epfSection:"💰 EPF Contribution (Caruman KWSP)",epfRate:"EPF Contribution Rate",
-    epfAnnual:"Annual EPF contribution",epfRelief:"EPF Relief (capped RM7,000)",
-    epfNote:"EPF relief is shared with life insurance under the same RM7,000 cap.",
+    epfAnnual:"Annual EPF contribution",epfRelief:"EPF Relief (capped RM4,000)",
+    epfNote:"EPF sub-limit: RM4,000. Life insurance / takaful sub-limit: RM3,000. Combined cap: RM7,000.",
     rebateSection:"🏷️ Tax Rebates (Rebat Cukai)",
     summarySection:"📊 Relief Summary",totalPersonal:"Total Personal Reliefs",
     settingsNote:"⚠ Note",settingsNoteText:"All figures based on YA 2026 LHDN guidelines. Consult a licensed tax agent for official assessment.",
@@ -258,8 +258,8 @@ const T = {
     selfSection:"🧑 Pelepasan Diri",selfDisabled:"Diri Sendiri — OKU +RM6,000",
     selfDisabledSub:"Tambahan RM6,000 atas pelepasan individu standard RM9,000",
     epfSection:"💰 Caruman KWSP",epfRate:"Kadar Caruman KWSP",
-    epfAnnual:"Caruman KWSP tahunan",epfRelief:"Pelepasan KWSP (had RM7,000)",
-    epfNote:"Pelepasan KWSP dikongsi dengan premium insurans nyawa dalam had RM7,000 yang sama.",
+    epfAnnual:"Caruman KWSP tahunan",epfRelief:"Pelepasan KWSP (had RM4,000)",
+    epfNote:"Had kecil KWSP: RM4,000. Had kecil insurans nyawa / takaful: RM3,000. Had gabungan: RM7,000.",
     rebateSection:"🏷️ Rebat Cukai",
     summarySection:"📊 Ringkasan Pelepasan",totalPersonal:"Jumlah Pelepasan Peribadi",
     settingsNote:"⚠ Nota",settingsNoteText:"Semua angka berdasarkan garis panduan LHDN TT 2026. Rujuk ejen cukai berlesen untuk taksiran rasmi.",
@@ -338,17 +338,20 @@ const T = {
 };
 
 const TAX_RELIEF_CATEGORIES = [
-  {id:"medical",   en:"Medical & Health",               ms:"Perubatan & Kesihatan",        icon:"🏥",limit:10000,color:"#52B788"},
-  {id:"education", en:"Education",                      ms:"Pendidikan (Yuran)",            icon:"📚",limit:7000, color:"#40916C"},
-  {id:"lifestyle", en:"Lifestyle",                      ms:"Gaya Hidup",                    icon:"🛍️",limit:2500, color:"#74C69D"},
-  {id:"equipment", en:"Equipment & Devices",            ms:"Komputer / Telefon Pintar",     icon:"💻",limit:2500, color:"#95D5B2"},
-  {id:"epf",       en:"EPF / Life Insurance",           ms:"Insurans Nyawa & KWSP",         icon:"🛡️",limit:7000, color:"#2D6A4F"},
-  {id:"childcare", en:"Child & Education",              ms:"Anak & Yuran Taska/Tadika",     icon:"👶",limit:3000, color:"#1B4332"},
-  {id:"donations", en:"Donations (Approved Bodies)",    ms:"Derma (Institusi Diluluskan)",  icon:"🤲",limit:7000, color:"#B7E4C7"},
-  {id:"zakat",     en:"Zakat",                          ms:"Zakat",                         icon:"🌙",limit:null, color:"#D4AF37"},
-  {id:"sspn",      en:"SSPN Savings",                   ms:"Simpanan SSPN",                 icon:"🎓",limit:8000, color:"#4A90D9"},
-  {id:"prs",       en:"Private Retirement Scheme (PRS)",ms:"Skim Persaraan Swasta (PRS)",   icon:"🏦",limit:3000, color:"#7B5EA7"},
-  {id:"other",     en:"Other (Non-claimable)",          ms:"Lain-lain (Tidak Dituntut)",    icon:"📋",limit:null, color:"#555"},
+  {id:"medical",   en:"Medical & Health",                ms:"Perubatan & Kesihatan",          icon:"🏥",limit:10000,color:"#52B788"},
+  {id:"education", en:"Education Fees (Self)",           ms:"Yuran Pendidikan (Diri Sendiri)",icon:"📚",limit:7000, color:"#40916C"},
+  {id:"lifestyle", en:"Lifestyle",                       ms:"Gaya Hidup",                     icon:"🛍️",limit:2500, color:"#74C69D"},
+  {id:"equipment", en:"Computing Devices",               ms:"Komputer / Tablet / Telefon",    icon:"💻",limit:2500, color:"#95D5B2"},
+  {id:"ev",        en:"EV Charging Equipment",           ms:"Peralatan Pengecasan EV",        icon:"⚡",limit:2500, color:"#00BCD4"},
+  {id:"tourism",   en:"Tourism — Visit Malaysia 2026",   ms:"Pelancongan — Melawat Malaysia", icon:"🏖️",limit:1000, color:"#FF7043"},
+  {id:"epf",       en:"EPF / Life Insurance",            ms:"KWSP / Insurans Nyawa",          icon:"🛡️",limit:7000, color:"#2D6A4F"},
+  {id:"socso",     en:"SOCSO / EIS Contribution",        ms:"Caruman PERKESO / SIP",          icon:"🏛️",limit:350,  color:"#607D8B"},
+  {id:"childcare", en:"Childcare & Kindergarten (≤12)",  ms:"Taska & Tadika (≤12 tahun)",     icon:"👶",limit:3000, color:"#1B4332"},
+  {id:"donations", en:"Donations (Approved Bodies)",     ms:"Derma (Institusi Diluluskan)",   icon:"🤲",limit:7000, color:"#B7E4C7"},
+  {id:"zakat",     en:"Zakat",                           ms:"Zakat",                          icon:"🌙",limit:null, color:"#D4AF37"},
+  {id:"sspn",      en:"SSPN Savings",                    ms:"Simpanan SSPN",                  icon:"🎓",limit:8000, color:"#4A90D9"},
+  {id:"prs",       en:"Private Retirement Scheme (PRS)", ms:"Skim Persaraan Swasta (PRS)",    icon:"🏦",limit:3000, color:"#7B5EA7"},
+  {id:"other",     en:"Other (Non-claimable)",           ms:"Lain-lain (Tidak Dituntut)",     icon:"📋",limit:null, color:"#555"},
 ];
 
 const INCOME_BANDS = [
@@ -371,9 +374,12 @@ const DOC_CATS = [
   {id:"medical",  en:"Medical",          ms:"Perubatan",                 icon:"🏥",color:"#52B788"},
   {id:"education",en:"Education",        ms:"Pendidikan",                icon:"📚",color:"#40916C"},
   {id:"lifestyle",en:"Lifestyle",        ms:"Gaya Hidup",                icon:"🛍️",color:"#74C69D"},
-  {id:"equipment",en:"Equipment",        ms:"Peralatan",                 icon:"💻",color:"#95D5B2"},
-  {id:"epf",      en:"EPF / Insurance",  ms:"Insurans & KWSP",           icon:"🛡️",color:"#2D6A4F"},
-  {id:"childcare",en:"Child",            ms:"Anak & Taska",              icon:"👶",color:"#1B4332"},
+  {id:"equipment",en:"Computing",        ms:"Komputer / Telefon",        icon:"💻",color:"#95D5B2"},
+  {id:"ev",       en:"EV Charging",      ms:"Pengecasan EV",             icon:"⚡",color:"#00BCD4"},
+  {id:"tourism",  en:"Tourism",          ms:"Pelancongan",               icon:"🏖️",color:"#FF7043"},
+  {id:"epf",      en:"EPF / Insurance",  ms:"KWSP / Insurans",           icon:"🛡️",color:"#2D6A4F"},
+  {id:"socso",    en:"SOCSO / EIS",      ms:"PERKESO / SIP",             icon:"🏛️",color:"#607D8B"},
+  {id:"childcare",en:"Childcare",        ms:"Taska & Tadika",            icon:"👶",color:"#1B4332"},
   {id:"donations",en:"Donations",        ms:"Derma",                     icon:"🤲",color:"#B7E4C7"},
   {id:"zakat",    en:"Zakat",            ms:"Zakat",                     icon:"🌙",color:"#D4AF37"},
   {id:"sspn",     en:"SSPN",             ms:"SSPN",                      icon:"🎓",color:"#4A90D9"},
@@ -480,11 +486,11 @@ export default function MyTaxApp(){
   const[showDocs,setShowDocs]=useState(false);
   const[showSettings,setShowSettings]=useState(false);
   const[showKebabMenu,setShowKebabMenu]=useState(false);
-  const[planAmounts,setPlanAmounts]=useState({medical:0,education:0,lifestyle:0,equipment:0,epf:0,childcare:0,donations:0,sspn:0,prs:0});
+  const[planAmounts,setPlanAmounts]=useState({medical:0,education:0,lifestyle:0,equipment:0,ev:0,tourism:0,epf:0,childcare:0,donations:0,sspn:0,prs:0});
   const[planApplied,setPlanApplied]=useState(false);
   const[planSuggestions,setPlanSuggestions]=useState(null);
   const[planLoading,setPlanLoading]=useState(false);
-  function resetPlan(){setPlanAmounts({medical:0,education:0,lifestyle:0,equipment:0,epf:0,childcare:0,donations:0,sspn:0,prs:0});setPlanSuggestions(null);setPlanApplied(false);}
+  function resetPlan(){setPlanAmounts({medical:0,education:0,lifestyle:0,equipment:0,ev:0,tourism:0,epf:0,childcare:0,donations:0,sspn:0,prs:0});setPlanSuggestions(null);setPlanApplied(false);}
   function applyPlan(){
     const today=new Date().toISOString().slice(0,10);
     const newExp=Object.entries(planAmounts).filter(([,v])=>v>0).map(([cat,amt])=>({
@@ -631,7 +637,7 @@ ${expenses.length>0?`
   const disChildRelief=profile.numDisabledChildren*6000;
   const selfDisRelief=profile.selfDisabled?6000:0;
   const epfContrib=Math.round(annualIncome*(profile.epfRate/100));
-  const epfReliefAmt=Math.min(epfContrib,7000);
+  const epfReliefAmt=Math.min(epfContrib,4000);
   const personalReliefTotal=9000+selfDisRelief+spouseReliefAmt+childReliefAmt+disChildRelief;
 
   const reliefTotals={};
@@ -669,7 +675,7 @@ ${expenses.length>0?`
     try{
       const res=await fetch("/api/claude",{method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:600,
-          system:`Malaysian LHDN tax assistant. Return ONLY JSON: {"merchant":"","date":"YYYY-MM-DD","amount":0,"lhdn_category":"medical|education|lifestyle|equipment|epf|childcare|donations|zakat|sspn|prs|other","tax_claimable":true,"treatment":"implikasi cukai explanation","confidence":"high|medium|low"}`,
+          system:`Malaysian LHDN tax assistant. Return ONLY JSON: {"merchant":"","date":"YYYY-MM-DD","amount":0,"lhdn_category":"medical|education|lifestyle|equipment|ev|tourism|epf|socso|childcare|donations|zakat|sspn|prs|other","tax_claimable":true,"treatment":"implikasi cukai explanation","confidence":"high|medium|low"}`,
           messages:[{role:"user",content:[{type:"image",source:{type:"base64",media_type:file.type,data:dataUrl.split(",")[1]}},{type:"text",text:"Analyse for LHDN."}]}]})});
       const data=await res.json();
       const parsed=JSON.parse(data.content.map(b=>b.text||"").join("").replace(/```json|```/g,"").trim());
@@ -700,7 +706,7 @@ ${expenses.length>0?`
     try{
       const res=await fetch("/api/claude",{method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,
-          system:`Malaysian tax receipt OCR. Return ONLY JSON: {"merchant":"","date":"YYYY-MM-DD","total":0,"items":[],"category":"medical|education|lifestyle|equipment|epf|childcare|donations|zakat|sspn|prs|other","category_reason":"","tax_claimable":true,"confidence":"high|medium|low","notes":""}`,
+          system:`Malaysian tax receipt OCR. Return ONLY JSON: {"merchant":"","date":"YYYY-MM-DD","total":0,"items":[],"category":"medical|education|lifestyle|equipment|ev|tourism|epf|socso|childcare|donations|zakat|sspn|prs|other","category_reason":"","tax_claimable":true,"confidence":"high|medium|low","notes":""}`,
           messages:[{role:"user",content:[{type:"image",source:{type:"base64",media_type:"image/jpeg",data:imgB64}},{type:"text",text:"Extract and classify for LHDN."}]}]})});
       const data=await res.json();
       const parsed=JSON.parse(data.content?.map(b=>b.text||"").join("").replace(/```json|```/g,"").trim());
@@ -722,7 +728,7 @@ ${expenses.length>0?`
     try{
       const res=await fetch("/api/claude",{method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,
-          system:`Malaysian tax doc OCR. Return ONLY JSON: {"doc_type":"receipt|invoice|form|other","merchant":"","date":"YYYY-MM-DD","amount":0,"items":[],"lhdn_category":"medical|education|lifestyle|equipment|epf|childcare|donations|zakat|sspn|prs|income|other","category_reason":"","tax_claimable":true,"is_expense":true,"confidence":"high|medium|low","suggested_name":"","notes":""}`,
+          system:`Malaysian tax doc OCR. Return ONLY JSON: {"doc_type":"receipt|invoice|form|other","merchant":"","date":"YYYY-MM-DD","amount":0,"items":[],"lhdn_category":"medical|education|lifestyle|equipment|ev|tourism|epf|socso|childcare|donations|zakat|sspn|prs|income|other","category_reason":"","tax_claimable":true,"is_expense":true,"confidence":"high|medium|low","suggested_name":"","notes":""}`,
           messages:[{role:"user",content:[{type:"image",source:{type:"base64",media_type:file.type,data:dataUrl.split(",")[1]}},{type:"text",text:"Extract and classify for LHDN."}]}]})});
       const data=await res.json();
       const p=JSON.parse(data.content?.map(b=>b.text||"").join("").replace(/```json|```/g,"").trim());
@@ -1374,7 +1380,7 @@ return(<div key={cat.id} style={card()}>
 <span style={{color:"#64748B",fontSize:12}}>{s.planEffectiveBracket}</span>
 <span style={{color:"#3B6FD4",fontWeight:"bold",fontSize:14}}>{(planMarginalRate*100).toFixed(1)}%</span>
 </div>
-{TAX_RELIEF_CATEGORIES.filter(c=>c.id!=="other"&&c.id!=="zakat").map(cat=>{
+{TAX_RELIEF_CATEGORIES.filter(c=>c.id!=="other"&&c.id!=="zakat"&&c.id!=="socso").map(cat=>{
 const spent=cat.id==="epf"?mergedEpf:(reliefTotals[cat.id]||0);
 const cap=cat.limit||0;
 const gap=cat.limit?Math.max(0,cap-spent):9999;
