@@ -944,8 +944,9 @@ input[type=range]{accent-color:#74C69D;}::-webkit-scrollbar{width:0;}
 
 {tab===2&&(
 <div style={{animation:"fadeIn 0.3s ease"}}>
+
 <div style={{color:"#64748B",fontSize:11,marginBottom:14}}>{s.reliefTabSub}</div>
-{TAX_RELIEF_CATEGORIES.filter(c=>c.id!=="other").map(cat=>{
+{TAX_RELIEF_CATEGORIES.filter(c=>c.id!=="other"&&c.id!=="zakat").map(cat=>{
 const spent=cat.id==="epf"?mergedEpf:reliefTotals[cat.id]||0;
 const capped=cat.limit?Math.min(spent,cat.limit):spent;
 const pct=cat.limit?Math.min((spent/cat.limit)*100,100):0;
@@ -959,6 +960,38 @@ return(<div key={cat.id} style={card()}>
 {rem!==null&&rem>0&&<div style={{color:"#94A3B8",fontSize:10,marginTop:5}}>{s.remaining(rem)}</div>}
 {pct>=100&&cat.limit&&<div style={{color:"#DC2626",fontSize:10,marginTop:5}}>{s.capReached}</div>}
 </div>);})}
+
+<div style={{display:"flex",alignItems:"center",gap:10,margin:"18px 0 12px"}}>
+<div style={{flex:1,height:1,background:"#E2E8F0"}}/>
+<span style={{color:"#B7860B",fontSize:10,fontWeight:"bold",letterSpacing:1,textTransform:"uppercase"}}>{lang==="ms"?"Rebat Cukai":"Tax Rebate"}</span>
+<div style={{flex:1,height:1,background:"#E2E8F0"}}/>
+</div>
+
+<div style={{background:"rgba(212,175,55,0.06)",border:"1px solid rgba(212,175,55,0.25)",borderRadius:16,padding:"14px 16px"}}>
+<div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:10}}>
+<div style={{display:"flex",alignItems:"center",gap:8}}>
+<span style={{fontSize:18}}>🌙</span>
+<div>
+<div style={{color:"#1E293B",fontSize:13}}>{lang==="ms"?"Zakat Pendapatan":"Zakat Pendapatan"}</div>
+<div style={{color:"#94A3B8",fontSize:10,marginTop:2}}>{s.zakatRebateSub}</div>
+</div>
+</div>
+<div style={{textAlign:"right"}}>
+<div style={{color:"#D4AF37",fontWeight:"bold",fontSize:15}}>RM {zakatPaid.toLocaleString()}</div>
+<div style={{color:"#94A3B8",fontSize:10,marginTop:2}}>{lang==="ms"?"Dibayar":"Declared"}</div>
+</div>
+</div>
+{zakatPaid>0&&(
+<div style={{borderTop:"1px solid rgba(212,175,55,0.2)",paddingTop:10,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+<div style={{color:"#64748B",fontSize:11}}>{lang==="ms"?"Rebat berkesan (had kepada cukai kena bayar)":"Effective rebate (capped at tax payable)"}</div>
+<div style={{color:"#B7860B",fontWeight:"bold",fontSize:13}}>- RM {zakatRebate.toLocaleString()}</div>
+</div>
+)}
+{zakatPaid===0&&(
+<div style={{color:"#94A3B8",fontSize:11,textAlign:"center",padding:"4px 0"}}>{s.zakatNudge}</div>
+)}
+</div>
+
 </div>
 )}
 
