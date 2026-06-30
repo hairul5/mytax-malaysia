@@ -675,7 +675,7 @@ ${expenses.length>0?`
     try{
       const res=await fetch("/api/claude",{method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:600,
-          system:`Malaysian LHDN tax assistant. Return ONLY JSON: {"merchant":"","date":"YYYY-MM-DD","amount":0,"lhdn_category":"medical|education|lifestyle|equipment|ev|tourism|epf|socso|childcare|donations|zakat|sspn|prs|other","tax_claimable":true,"treatment":"implikasi cukai explanation","confidence":"high|medium|low"}`,
+          system:`Malaysian LHDN tax assistant. Return ONLY JSON: {"merchant":"","date":"YYYY-MM-DD","amount":0,"lhdn_category":"medical|education|lifestyle|equipment|ev|tourism|epf|socso|childcare|donations|sspn|prs|other","tax_claimable":true,"treatment":"implikasi cukai explanation","confidence":"high|medium|low"}`,
           messages:[{role:"user",content:[{type:"image",source:{type:"base64",media_type:file.type,data:dataUrl.split(",")[1]}},{type:"text",text:"Analyse for LHDN."}]}]})});
       const data=await res.json();
       const parsed=JSON.parse(data.content.map(b=>b.text||"").join("").replace(/```json|```/g,"").trim());
@@ -889,7 +889,7 @@ input[type=range]{accent-color:#74C69D;}::-webkit-scrollbar{width:0;}
 <input ref={expFileRef} type="file" accept="image/*,application/pdf" onChange={e=>handleExpAttach(e.target.files?.[0])} style={{display:"none"}}/>
 <input ref={expCamRef} type="file" accept="image/*" capture="environment" onChange={e=>handleExpAttach(e.target.files?.[0])} style={{display:"none"}}/>
 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
-<div><div style={{color:"#1E293B",fontWeight:"bold",fontSize:16}}>{s.myExpenses}</div><div style={{color:"#94A3B8",fontSize:11,marginTop:2}}>{s.records(expenses.length,fmt(expenses.reduce((t,e)=>t+e.amount,0)))}</div></div>
+<div><div style={{color:"#1E293B",fontWeight:"bold",fontSize:16}}>{s.myExpenses}</div><div style={{color:"#94A3B8",fontSize:11,marginTop:2}}>{(()=>{const e=expenses.filter(x=>x.category!=="zakat");return s.records(e.length,fmt(e.reduce((t,x)=>t+x.amount,0)));})()}</div></div>
 <div style={{display:"flex",gap:8}}>
 <button onClick={()=>setShowDocs(true)} style={{background:"rgba(116,198,157,0.12)",border:"1px solid rgba(116,198,157,0.3)",borderRadius:20,color:"#2D6A4F",fontSize:12,padding:"7px 12px",cursor:"pointer"}}>{s.scanBtn}</button>
 <button onClick={()=>setShowAdd(!showAdd)} style={{background:"#74C69D",border:"none",borderRadius:20,color:"#FFFFFF",fontWeight:"bold",fontSize:12,padding:"7px 14px",cursor:"pointer"}}>{s.addBtn}</button>
@@ -924,7 +924,7 @@ input[type=range]{accent-color:#74C69D;}::-webkit-scrollbar{width:0;}
 <input type="date" value={newExp.date} onChange={e=>setNewExp({...newExp,date:e.target.value})} style={{...iStyle,flex:1,marginBottom:0}}/>
 </div>
 <select value={newExp.category} onChange={e=>setNewExp({...newExp,category:e.target.value})} style={{...iStyle,background:"#F8FAFC",marginBottom:0}}>
-{TAX_RELIEF_CATEGORIES.map(c=><option key={c.id} value={c.id}>{c.icon} {c[lang]}</option>)}
+{TAX_RELIEF_CATEGORIES.filter(c=>c.id!=="zakat").map(c=><option key={c.id} value={c.id}>{c.icon} {c[lang]}</option>)}
 </select>
 {expAttach&&<div style={{fontSize:11,color:"#40916C",background:"rgba(116,198,157,0.08)",borderRadius:8,padding:"6px 10px"}}>{s.vaultNotice}</div>}
 <div style={{display:"flex",gap:8,marginTop:4}}>
@@ -933,7 +933,7 @@ input[type=range]{accent-color:#74C69D;}::-webkit-scrollbar{width:0;}
 </div></div>
 </div>
 )}
-{[...expenses].reverse().map(e=>{const c=catFor(e.category);return(
+{[...expenses].filter(e=>e.category!=="zakat").reverse().map(e=>{const c=catFor(e.category);return(
 <div key={e.id} style={{background:"#FFFFFF",borderRadius:14,padding:"12px 14px",marginBottom:10,border:"1px solid #E2E8F0",display:"flex",alignItems:"center",gap:12}}>
 {e.thumb?<img src={e.thumb} alt="" style={{width:40,height:40,objectFit:"cover",borderRadius:10,flexShrink:0}}/>:<div style={{width:40,height:40,borderRadius:12,background:`${c.color}22`,border:`1px solid ${c.color}44`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:18,flexShrink:0}}>{c.icon}</div>}
 <div style={{flex:1,minWidth:0}}><div style={{color:"#1E293B",fontSize:13,fontWeight:"500",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{e.desc}</div><div style={{color:"#94A3B8",fontSize:11,marginTop:2}}>{c[lang]} · {e.date}</div></div>
