@@ -291,7 +291,7 @@ Key term decisions documented:
 | Data persistence | In-memory only | Resets on refresh — wire Firebase/Supabase |
 | MyInvois API | Not integrated | Requires ERP-level OAuth — not suitable for client-side app |
 | Nisab auto-update | Manual | Fetch from zakat body API or update hardcode twice yearly |
-| Year-on-Year comparison | Not built | Manual YA 2025 input overlay — straightforward to add |
+| Year-on-Year comparison | Not built | Manual YA 2026 input overlay — straightforward to add |
 | Push notifications | Not built | PCB reminder in March, filing deadline in April |
 | Multi-device sync | Not built | Requires backend |
 | Camera-native OCR | Browser only | `capture="environment"` on mobile; no native SDK |
